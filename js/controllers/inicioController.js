@@ -9,6 +9,7 @@
 
     function InicioController(contenidoInicio, $sce) {
         var vm = this;
+        debugger;
         vm.titulo = contenidoInicio.titulo;
         vm.contenido = $sce.trustAsHtml(contenidoInicio.contenido);
     }

@@ -5,9 +5,12 @@
         .module('miApp')
         .controller('NavbarController', NavbarController);
 
-    NavbarController.$inject = ['$scope'];
+    NavbarController.$inject = ['$scope', '$state'];
 
-    function NavbarController($scope) {
+    function NavbarController($scope, $state) {
         var vm = this;
+        $scope.openForm = function() {
+            $state.go('formUser');
+        };
     }
 })();

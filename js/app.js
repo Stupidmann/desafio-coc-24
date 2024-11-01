@@ -29,6 +29,25 @@
         }]
       }
     });
+
+    $stateProvider
+    .state('formUser', {
+      url: '/nuevoTurno',
+      templateUrl: 'pages/nuevoTurno.html',
+      controller: 'FormController as formCtrl',
+      resolve: {
+        especialidades: ['ProService', function(ProService) {
+          return ProService.obtenerEspecialidad()
+            .then(function(response) {
+              return response;
+            })
+            .catch(function(error) {
+              console.log('Error obteniendo especialidades');
+              throw error;
+            });
+        }]
+      }
+    });
   }
 
   MainController.$inject = ['$scope'];
