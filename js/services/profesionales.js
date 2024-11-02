@@ -27,10 +27,28 @@
   
             return promise;
         };
+
+        service.obtenerProfesionalesUrl = apiBaseUrl + '/data/profesionales.json';
+
+        service.obtenerProfesionales = function() {
+            var promise = $http.get(service.obtenerProfesionalesUrl)
+                .then(function(response) {
+                    return response.data;
+                })
+                .catch(function(error) {
+                    console.error('Error al recuperar profesionales:', error);
+                    throw error;
+                });
+  
+            return promise;
+        };
   
         return {
             obtenerEspecialidad: function() {
                 return service.obtenerEspecialidad();
+            },
+            obtenerProfesionales: function() {
+                return service.obtenerProfesionales();
             }
         };
     }

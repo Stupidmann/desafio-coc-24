@@ -5,12 +5,16 @@
         .module('miApp')
         .controller('FormController', FormController);
 
-    FormController.$inject = ['especialidades', '$scope'];
+    FormController.$inject = ['especialidades'];
 
-    function FormController(especialidades, $scope ) {
+    function FormController(especialidades) {
         var vm = this;
 
-        vm.especialidades = [...new Set(especialidades.especialidades_medicas)];
+        vm.especialidades = especialidades;
+        vm.selectedSpecialtyId = 0;
         
+        const onSpecialtyChange = function () {
+            
+        }
     }
 })();
