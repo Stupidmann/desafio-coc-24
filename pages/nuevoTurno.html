@@ -3,14 +3,34 @@
     <div class="form-group">
         <h2 class="text-center">NUEVO TURNO</h2>
         <label for="specialitySelector">Selecciona una especialidad:</label>
-        <select class="form-control" id="specialitySelector" ng-model="selectedSpecialty" ng-change="onSpecialtyChange()">
+        <select class="form-control col-4" id="specialitySelector" ng-model="selectedSpecialty" ng-change="onSpecialtyChange(selectedSpecialty)">
             <option value="" disabled selected>-</option>
-            <option ng-repeat="especialidad in formCtrl.especialidades" 
+            <option ng-repeat="especialidad in formCtrl.especialidades"
                     value="{{especialidad.esp_id}}">
                 {{especialidad.especialidad_medica}}
             </option>
         </select>
-        <select ng-if ></select>
+
+        <div ng-if="selectedSpecialtyId !== 0">
+            <label for="proSelector">Selecciona profesional:</label>
+            <select class="form-control col-4" ng-model="profSelected" ng-change="onProChange(profSelected)">
+                <option value="" disabled selected>-</option>
+                <option ng-repeat="profesional in formCtrl.prosForDisplay"
+                        value="{{profesional.id}}">
+                    {{profesional.nombre}}
+                </option>
+            </select>
+        </div>
+        <div ng-if="schedules.length != 0" >
+            <label for="proSelector">Selecciona horarios:</label>
+            <select class="form-control col-4" ng-model="scheduleSelected" ng-change="onScheduleChange(scheduleSelected)">
+                <option value="" disabled selected>-</option>
+                <option ng-repeat="schedule in formCtrl.schedules"
+                        value="{{schedule}}">
+                    {{schedule}}
+                </option>
+            </select>
+        </div>
     </div>
 
 </div>

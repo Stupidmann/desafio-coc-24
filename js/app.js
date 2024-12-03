@@ -45,6 +45,16 @@
               console.log('Error obteniendo especialidades');
               throw error;
             });
+        }],
+        profesionales: ['ProService', function(ProService) {
+          return ProService.obtenerProfesionales()
+            .then(function(response) {
+              return response;
+            })
+            .catch(function(error) {
+              console.log('Error obteniendo profesionales');
+              throw error;
+            });
         }]
       }
     });
