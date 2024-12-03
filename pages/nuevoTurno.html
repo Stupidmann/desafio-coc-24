@@ -1,19 +1,21 @@
 <ng-include src="'../pages/partials/navbar.html'"></ng-include>
 <div class="container inicio">
-    <div class="form-group">
-        <h2 class="text-center">NUEVO TURNO</h2>
-        <label for="specialitySelector">Selecciona una especialidad:</label>
-        <select class="form-control col-4" id="specialitySelector" ng-model="selectedSpecialty" ng-change="onSpecialtyChange(selectedSpecialty)">
-            <option value="" disabled selected>-</option>
-            <option ng-repeat="especialidad in formCtrl.especialidades"
-                    value="{{especialidad.esp_id}}">
-                {{especialidad.especialidad_medica}}
-            </option>
-        </select>
+    <h2 class="text-center">NUEVO TURNO</h2>
+    <div class="form-group row">
+        <div class="col-md-4" >
+            <label for="specialitySelector">Selecciona una especialidad:</label>
+            <select class="form-control" id="specialitySelector" ng-model="selectedSpecialty" ng-change="onSpecialtyChange(selectedSpecialty)">
+                <option value="" disabled selected>-</option>
+                <option ng-repeat="especialidad in formCtrl.especialidades"
+                        value="{{especialidad.esp_id}}">
+                    {{especialidad.especialidad_medica}}
+                </option>
+            </select>
+        </div>
 
-        <div ng-if="selectedSpecialtyId !== 0">
+        <div class="col-md-4" ng-if="selectedSpecialty">
             <label for="proSelector">Selecciona profesional:</label>
-            <select class="form-control col-4" ng-model="profSelected" ng-change="onProChange(profSelected)">
+            <select class="form-control" ng-model="profSelected" ng-change="onProChange(profSelected)">
                 <option value="" disabled selected>-</option>
                 <option ng-repeat="profesional in formCtrl.prosForDisplay"
                         value="{{profesional.id}}">
@@ -21,9 +23,10 @@
                 </option>
             </select>
         </div>
-        <div ng-if="schedules.length != 0" >
+
+        <div class="col-md-4" ng-if="formCtrl.schedules.length" >
             <label for="proSelector">Selecciona horarios:</label>
-            <select class="form-control col-4" ng-model="scheduleSelected" ng-change="onScheduleChange(scheduleSelected)">
+            <select class="form-control" ng-model="scheduleSelected" ng-change="onScheduleChange(scheduleSelected)">
                 <option value="" disabled selected>-</option>
                 <option ng-repeat="schedule in formCtrl.schedules"
                         value="{{schedule}}">

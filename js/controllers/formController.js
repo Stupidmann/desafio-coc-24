@@ -17,22 +17,26 @@
         $scope.selectedSpecialtyId = 0;
         $scope.selectedProfId = 0;
         $scope.selectedSchedule = 0;
+
+        function resetSelectors () {
+            vm.prosForDisplay = [];
+            vm.schedules = [];
+        }
         
         $scope.onSpecialtyChange = function (selectedEsp) {
+            resetSelectors();
             $scope.selectedSpecialtyId = selectedEsp;
             vm.prosForDisplay = vm.profesionales.filter(profesionales => profesionales.esp_id == selectedEsp);
-            debugger;
         }
 
-        $scope.onProChange = function (prof) {
+        $scope.onProChange = function (prof = null) {
+            if (prof == null) return
             vm.selectedProfId = prof;
             vm.schedules = vm.profesionales.filter(profesionales => profesionales.id == prof)[0].horarios;
-            debugger;
-            // vm.schedules = profesionales.filter()
         }
 
         $scope.onScheduleChange = function (schedule) {
-            vm.selectedProfId = schedule;
+            // vm.selectedProfId = schedule;
         }
     }
 })();
